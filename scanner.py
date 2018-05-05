@@ -3,7 +3,7 @@ import picamera
 import time
 
 #camera = picamera.PiCamera()
-#camera.capture('image.jpg')
+#camera.capture('/home/pi/image.jpg')
 
 #camera.start_preview()
 #camera.vflip = True
@@ -11,7 +11,7 @@ import time
 #camera.brightness = 60
 
 #camera.start_recording('video.h264')
-#sleep(5)
+#time.sleep(5)
 #camera.stop_recording()
 
 scan = 0
@@ -45,13 +45,11 @@ nbStep = 360/stepAngle
 StepCounter = 0
 WaitTime = 0.5
 
-#StepCount1 = 4
-#Seq1 = []
-#Seq1 = range(0, StepCount1)
-#Seq1[0] = [1,0,0,0]
-#Seq1[1] = [0,1,0,0]
-#Seq1[2] = [0,0,1,0]
-#Seq1[3] = [0,0,0,1]
+StepCount1 = 4
+Seq1 = [[1,0,0,0],
+        [0,1,0,0],
+        [0,0,1,0],
+        [0,0,0,1]]
 
 # Initializing output pin sequence
 StepCount2 = 8
@@ -99,23 +97,6 @@ def my_turn():
             StepCounter += 1
 
 
-#gpio.add_event_detect(20, gpio.RISING)
-#def my_more(self):
- #   print ("more")
-#    global delai
-#    if delai < 10 :
-#        delai = delai*1.3
-#    else :
-#        delai = 10
-#gpio.add_event_callback(20, my_more)
-
-#gpio.add_event_detect(21, gpio.RISING)
-#def my_less(self):
-#    print ("less")
-#    global delai
-#    delai = delai/1.3
-#gpio.add_event_callback(21, my_less)
-photo = 0
 
 #camera.vflip = True
 #camera.hflip = True
@@ -124,8 +105,10 @@ photo = 0
 #camera.start_recording('video.h264')
 #sleep(5)
 #camera.stop_recording()
-Seq = Seq2
-StepCount = StepCount2
+photo = 0
+
+Seq = Seq1
+StepCount = StepCount1
 
 
 while etat==1:
